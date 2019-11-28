@@ -9,6 +9,7 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, "dist"),
     compress: true,
+    open: true,
     port: 9000,
     watchContentBase: true,
     progress: true
@@ -17,7 +18,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.m?js$/,
+        test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
         use: {
           loader: "babel-loader"
@@ -39,6 +40,12 @@ module.exports = {
         test: /\.(png|svg|jpg|gif)$/,
         use: ["file-loader"]
       }
+    ]
+  },
+  resolve: {
+    extensions: [
+      '.js',
+      '.jsx'
     ]
   }
 };
