@@ -1,0 +1,25 @@
+{
+  "name": "pr2020",
+  "version": "1.0.0",
+  "description": "template for pr",
+  "main": "index.js",
+  "repository": "git@github.com:vickulbakin/pr2020.git",
+  "author": "vickulbakin <vickulbakin@mail.ru>",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --history-api-fallback --inline --progress"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "7",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^3.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.13.0",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
+  }
+}
