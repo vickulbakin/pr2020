@@ -1,38 +1,51 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
+
 module.exports = {
-  entry: __dirname + "/src/app/index.js",
+  entry: "./src/index.js",
+  mode: "development",
   output: {
-    path: __dirname + "/dist",
-    filename: "bundle.js",
-    publicPath: "/"
+    filename: "./main.js"
   },
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    compress: true,
+    open: true,
+    port: 9000,
+    watchContentBase: true,
+    progress: true
+  },
+  
   module: {
     rules: [
       {
-        test: /\.js$/,
-        use: "babel-loader",
-        exclude: [/node_modules/]
+        test: /\.(js|jsx)$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: "babel-loader"
+        }
       },
       {
-        test: /\.(sass|scss)$/,
-        use: [{
-            loader: "style-loader" // creates style nodes from JS strings
-        }, {
-            loader: "css-loader" // translates CSS into CommonJS
-        }, {
-            loader: "sass-loader" // compiles Sass to CSS
-        }]
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: true
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: ["file-loader"]
       }
     ]
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: __dirname + "/src/public/index.html",
-      inject: "body"
-    })
-  ],
-  devServer: {
-    contentBase: "./src/public",
-    port: 7700
+  resolve: {
+    extensions: [
+      '.js',
+      '.jsx'
+    ]
   }
 };
