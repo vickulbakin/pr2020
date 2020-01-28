@@ -1,0 +1,7 @@
+.root {
+  overflow: hidden;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(-45deg, #8ab1a4, #ffcdfc);
+}
