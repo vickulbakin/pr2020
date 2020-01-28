@@ -1,4 +1,5 @@
 const path = require("path");
+const postcssPresetEnv = require("postcss-preset-env");
 
 module.exports = {
   entry: "./src/index.js",
@@ -14,12 +15,12 @@ module.exports = {
     watchContentBase: true,
     progress: true
   },
-  
+
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /node_modules/,
         use: {
           loader: "babel-loader"
         }
@@ -31,7 +32,23 @@ module.exports = {
           {
             loader: "css-loader",
             options: {
-              modules: true
+              importLoaders: 1,
+              modules: {
+                localIdentName: "[name]__[local]___[hash:base64:5]"
+              },
+              sourceMap: true
+            }
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              ident: "postcss",
+              plugins: () => [
+                postcssPresetEnv({
+                  browsers: "last 2 versions",
+                  autoprefixer: true
+                })
+              ]
             }
           }
         ]
@@ -43,9 +60,6 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: [
-      '.js',
-      '.jsx'
-    ]
+    extensions: [".js", ".jsx"]
   }
 };
