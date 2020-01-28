@@ -1,5 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
-import App from "./component/test/test";
+import 'normalize.css';
+import './styles/reboot.css';
 
-ReactDOM.render(<App />, document.querySelector("#root"));
+import {Main} from "./pages/Main/Main";
+
+ReactDOM.render(<Main />, document.querySelector("#root"));
