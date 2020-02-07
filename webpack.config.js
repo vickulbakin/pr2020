@@ -1,14 +1,17 @@
 const path = require("path");
 const postcssPresetEnv = require("postcss-preset-env");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+
+const isDev = process.env.NODE_ENV === "development";
 
 module.exports = {
   entry: "./src/index.js",
-  mode: "development",
+  mode: isDev ? "development" : "production",
   output: {
-    path: path.resolve(__dirname, './dist'),
-    filename: 'main.js'
+    path: path.resolve(__dirname, "./dist"),
+    filename: "main.js"
   },
   devServer: {
     contentBase: path.join(__dirname, "dist"),
@@ -31,7 +34,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          "style-loader",
+          isDev ? "style-loader" : MiniCssExtractPlugin.loader,
           {
             loader: "css-loader",
             options: {
@@ -60,24 +63,24 @@ module.exports = {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
             options: {
-              outputPath: 'images',
-            },
+              outputPath: "images"
+            }
           }
-        ],
+        ]
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
             options: {
-              outputPath: 'fonts',
-            },
-          },
-        ],
-      },
+              outputPath: "fonts"
+            }
+          }
+        ]
+      }
     ]
   },
   resolve: {
@@ -85,8 +88,9 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
-      template: './src/index.html',
-    }),
-  ],
+      template: "./src/index.html"
+    })
+  ]
 };
