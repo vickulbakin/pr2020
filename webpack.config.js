@@ -32,7 +32,7 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
+        test: /\.(css|scss)$/,
         use: [
           isDev ? "style-loader" : MiniCssExtractPlugin.loader,
           {
@@ -56,7 +56,8 @@ module.exports = {
                 })
               ]
             }
-          }
+          },
+          "sass-loader"
         ]
       },
       {
