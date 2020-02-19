@@ -3,7 +3,7 @@ import cn from "classnames";
 import { Slide } from "../Slide/Slide";
 
 import { slides } from "./mock";
-import s from "./Slider.css";
+import s from "./Slider.scss";
 
 export const Slider = () => {
   const [transform, setTransform] = useState(0);
