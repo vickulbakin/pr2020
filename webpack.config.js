@@ -11,7 +11,7 @@ module.exports = {
   mode: isDev ? "development" : "production",
   output: {
     path: path.resolve(__dirname, "./dist"),
-    filename: "main.js"
+    filename: isDev ? "[name].js" : "[name].[contenthash].js"
   },
   devServer: {
     contentBase: path.join(__dirname, "dist"),
