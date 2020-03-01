@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import cn from "classnames";
 import { Slide } from "../Slide/Slide";
 
@@ -6,49 +6,51 @@ import { slides } from "./mock";
 import s from "./Slider.scss";
 
 export const Slider = () => {
+  const slider = useRef(null);
   const [transform, setTransform] = useState(0);
-  console.log("123");
 
   const onNextSlide = () => {
-    transform === (slides.length - 1) * -100
-        ? false
-        : setTransform(prevTransform => prevTransform - 100)
+    if (transform !== (slides.length - 1) * -100) {
+      setTransform(prevTransform => prevTransform - 100);
+    }
   };
 
   const onPrevSlide = () => {
-    transform === 0
-        ? false
-        : setTransform(prevTransform => prevTransform + 100)
+    if (transform !== 0) {
+      setTransform(prevTransform => prevTransform + 100);
+    }
   };
 
   const onPressArrow = useCallback(
     event => {
       if (event.code === "ArrowRight") {
         onNextSlide();
-      } else if (event.code === "ArrowLeft") {
+      }
+
+      if (event.code === "ArrowLeft") {
         onPrevSlide();
-      } else {
-        return false;
       }
     },
     [onNextSlide, onPrevSlide]
   );
 
   useEffect(() => {
+    requestAnimationFrame(
+      () => (slider.current.style.transform = `translateX(${transform}vw)`)
+    );
+  }, [transform]);
+
+  useEffect(() => {
     window.addEventListener("keydown", onPressArrow);
 
-    return () =>
-      window.removeEventListener("keydown", onPressArrow);
+    return () => window.removeEventListener("keydown", onPressArrow);
   }, [onPressArrow]);
 
   return (
     <section className={s.root}>
-      <div
-        className={s.slides}
-        style={{ transform: `translateX(${transform}vw)` }}
-      >
-        {slides.map(slide => (
-          <Slide key={slide.title} info={slide} />
+      <div ref={slider} className={s.slides}>
+        {slides.map((slide, index) => (
+          <Slide key={index} info={slide} />
         ))}
       </div>
       <button
