@@ -1,8 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
 import "normalize.css";
 import "./styles/reboot.css";
 
-import { Main } from "./pages/Main/Main";
+import { App } from "./App";
 
-ReactDOM.hydrate(<Main />, document.querySelector("#root"));
+const renderMethod = !document.getElementById("root").childNodes.length
+  ? ReactDOM.render
+  : ReactDOM.hydrate;
+
+renderMethod(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.querySelector("#root")
+);

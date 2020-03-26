@@ -1,35 +1,29 @@
 import express from "express";
-import fs from "fs";
-import path from "path";
+import serverRenderer from "./renderer";
 
-import React from "react";
-import ReactDOMServer from "react-dom/server";
+const PORT = 3001;
+const path = require("path");
 
-import { Main } from "../src/pages/Main/Main";
-
-const PORT = 8000;
-
+// initialize the application and create the routes
 const app = express();
+const router = express.Router();
 
-app.use("^/$", (req, res) => {
-  fs.readFile(
-    path.resolve("./src/index.html"), "utf-8", (err, data) => {
-      if (err) {
-        console.log(err);
-        return res.status(500).send("Some error happend");
-      }
-      return res.send(
-        data.replace(
-          '<div id="root"></div>',
-          `<div id="root">${ReactDOMServer.renderToString(<Main />)}</div>`
-        )
-      );
-    }
-  );
-});
+// other static resources should just be served as they are
+router.use(
+  express.static(path.resolve(__dirname, "..", "dist"), { maxAge: "30d" })
+);
 
-// app.use(express.static(path.resolve(__dirname, "./src/styles")));
+// root (/) should always serve our server rendered page
+router.use("/*", serverRenderer);
 
-app.listen(PORT, () => {
-  console.log(`App lounched on ${PORT}`);
+// tell the app to use the above rules
+app.use(router);
+
+// start the app
+app.listen(PORT, error => {
+  if (error) {
+    return console.log("something bad happened - ", error);
+  }
+
+  console.log("listening on " + PORT + "...");
 });

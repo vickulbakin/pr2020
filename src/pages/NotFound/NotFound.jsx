@@ -1,14 +1,13 @@
 import React from "react";
 
 import { Container } from "../../components/Container/Container";
-import { Slider } from "../../component/Slider/Slider";
 
-import s from "./Main.scss";
+import s from "./NotFound.scss";
 
-export const Main = () => (
+export const NotFound = () => (
   <Container>
     <div className={s.root}>
-      <Slider />
+      <h1>Страница не найдена</h1>
     </div>
   </Container>
 );
