@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Container } from "../../components/Container/Container";
-import { Slider } from "../../component/Slider/Slider";
+import { Slider } from "../../components/Slider/Slider";
 
 import s from "./Main.scss";
 
