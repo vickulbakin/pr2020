@@ -17,9 +17,10 @@ module.exports = {
     contentBase: path.join(__dirname, "dist"),
     compress: true,
     open: true,
-    port: 9000,
+    port: 3000,
     watchContentBase: true,
-    progress: true
+    progress: true,
+    historyApiFallback: true,
   },
 
   module: {
@@ -40,7 +41,7 @@ module.exports = {
             options: {
               importLoaders: 1,
               modules: {
-                localIdentName: "[name]__[local]___[hash:base64:5]"
+                localIdentName: isDev ? "[name]__[local]___[hash:base64:5]" : "[hash:base64:5]"
               },
               sourceMap: true
             }
@@ -89,7 +90,9 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "[name].[contenthash].css"
+    }),
     new HtmlWebpackPlugin({
       template: "./src/index.html"
     })

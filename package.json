@@ -9,7 +9,7 @@
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server",
     "build": "NODE_ENV=production webpack",
-    "ssr": "node server/index.js"
+    "ssr": "yarn build && node server/index.js"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
@@ -37,6 +37,8 @@
     "normalize.css": "^8.0.1",
     "postcss-preset-env": "^6.7.0",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2"
   }
 }
