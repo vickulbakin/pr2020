@@ -40,7 +40,7 @@ module.exports = {
             options: {
               importLoaders: 1,
               modules: {
-                localIdentName: "[name]__[local]___[hash:base64:5]"
+                localIdentName: isDev ? "[name]__[local]___[hash:base64:5]" : "[hash:base64:5]"
               },
               sourceMap: true
             }
