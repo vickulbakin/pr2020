@@ -13,6 +13,7 @@ module.exports = {
     path: path.resolve(__dirname, "./dist"),
     filename: isDev ? "[name].js" : "[name].[contenthash].js"
   },
+  devtool: 'source-map',
   devServer: {
     contentBase: path.join(__dirname, "dist"),
     compress: true,
