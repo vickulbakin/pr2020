@@ -1,5 +1,5 @@
 const path = require("path");
-const postcssPresetEnv = require("postcss-preset-env");
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
@@ -15,10 +15,11 @@ module.exports = {
   },
   devtool: 'source-map',
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
+    contentBase: path.join(__dirname, "./dist"),
     compress: true,
     open: true,
     port: 3000,
+    hot: true,
     watchContentBase: true,
     progress: true
   },
@@ -28,9 +29,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader"
-        }
+        use: ["babel-loader"]
       },
       {
         test: /\.(css|scss)$/,
@@ -46,26 +45,15 @@ module.exports = {
               sourceMap: true
             }
           },
-          {
-            loader: "postcss-loader",
-            options: {
-              ident: "postcss",
-              plugins: () => [
-                postcssPresetEnv({
-                  browsers: "last 2 versions",
-                  autoprefixer: true
-                })
-              ]
-            }
-          },
+          "postcss-loader",
           "sass-loader"
         ]
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
+        test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+        type: 'asset/resource',
         use: [
           {
-            loader: "file-loader",
             options: {
               outputPath: "images"
             }
@@ -73,10 +61,10 @@ module.exports = {
         ]
       },
       {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+        type: 'asset/inline',
         use: [
           {
-            loader: "file-loader",
             options: {
               outputPath: "fonts"
             }
@@ -94,7 +82,10 @@ module.exports = {
       filename: "[name].[contenthash].css"
     }),
     new HtmlWebpackPlugin({
-      template: "./src/index.html"
-    })
+      title: 'webpack 5',
+      template: path.resolve(__dirname, './src/index.html'), // шаблон
+      filename: 'index.html', // название выходного файла
+    }),
+    new webpack.HotModuleReplacementPlugin(),
   ]
 };
