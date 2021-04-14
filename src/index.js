@@ -1,8 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import 'normalize.css';
-import './styles/reboot.css';
+import { BrowserRouter } from "react-router-dom";
+import { App } from "./App";
 
-import {Main} from "./pages/Main/Main";
+import "normalize.css";
+import "./styles/reboot.css";
 
-ReactDOM.render(<Main />, document.querySelector("#root"));
+ReactDOM.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.querySelector("#root")
+);
