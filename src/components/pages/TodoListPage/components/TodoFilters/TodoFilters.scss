@@ -1,0 +1,25 @@
+.root {
+  margin-bottom: 10px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.item {
+  padding: 5px;
+  flex-grow: 1;
+  font-size: 14px;
+  text-align: center;
+  border: 1px solid #000;
+  border-radius: 2px;
+  cursor: pointer;
+
+  &_active {
+    background-color: greenyellow;
+  }
+
+  & + & {
+    margin-left: 5px;
+  }
+}

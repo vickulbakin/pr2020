@@ -1,0 +1,70 @@
+.root {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  & + & {
+    margin-top: 10px;
+  }
+}
+
+.todo {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  background-color: yellow;
+  cursor: pointer;
+
+  &_complete {
+    background-color: greenyellow;
+  }
+}
+
+.radio {
+  margin-right: 10px;
+  position: relative;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #000;
+  border-radius: 50%;
+
+  &_check::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 5px;
+    height: 5px;
+    background-color: #000;
+    border-radius: 50%;
+  }
+}
+
+.text {
+  font-size: 20px;
+  flex-grow: 1;
+
+  &_complete {
+    text-decoration: line-through;
+  }
+}
+
+.remove {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.removeIcon {
+  width: 10px;
+}
