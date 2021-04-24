@@ -1,0 +1,21 @@
+.title {
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.itemWrapper {
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 4px;
+
+  & + & {
+    margin-top: 10px;
+  }
+}
+
+.linkWrapper {
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+  text-overflow: ellipsis;
+}
