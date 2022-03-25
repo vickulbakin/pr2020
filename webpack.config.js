@@ -1,5 +1,5 @@
 const path = require("path");
-const webpack = require('webpack');
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
@@ -13,16 +13,20 @@ module.exports = {
     path: path.resolve(__dirname, "./dist"),
     filename: isDev ? "[name].js" : "[name].[contenthash].js"
   },
-  devtool: 'source-map',
+  devtool: "source-map",
   devServer: {
-    contentBase: path.join(__dirname, "./dist"),
     compress: true,
     open: true,
     port: 3000,
-    hot: true,
-    watchContentBase: true,
-    progress: true,
-    historyApiFallback: true
+    hot: "only",
+    historyApiFallback: true,
+    client: {
+      progress: true
+    },
+    static: {
+      directory: path.join(__dirname, "./dist"),
+      watch: true
+    }
   },
 
   module: {
@@ -52,7 +56,7 @@ module.exports = {
       },
       {
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
         use: [
           {
             options: {
@@ -63,7 +67,7 @@ module.exports = {
       },
       {
         test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
-        type: 'asset/inline',
+        type: "asset/inline",
         use: [
           {
             options: {
@@ -83,9 +87,9 @@ module.exports = {
       filename: "[name].[contenthash].css"
     }),
     new HtmlWebpackPlugin({
-      title: 'webpack 5',
-      template: path.resolve(__dirname, './src/index.html'), // шаблон
-      filename: 'index.html', // название выходного файла
+      title: "webpack 5",
+      template: path.resolve(__dirname, "./src/index.html"), // шаблон
+      filename: "index.html", // название выходного файла
     }),
     new webpack.HotModuleReplacementPlugin(),
   ]

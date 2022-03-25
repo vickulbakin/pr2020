@@ -1,6 +1,6 @@
 import React from "react";
 import { Provider } from "react-redux";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { MainPage } from "./components/pages/MainPage/MainPage";
 import { PresentationPage } from "./components/pages/PresentationPage/PresentationPage";
 import { TodoListPage } from "./components/pages/TodoListPage/TodoListPage";
@@ -12,25 +12,16 @@ import { AppRoute } from "./data/constants";
 export const App = () => (
   <>
     <Provider store={store}>
-      <Switch>
-        <Route exact={true} path={AppRoute.mainPage} component={MainPage} />
+      <Routes>
+        <Route path={AppRoute.mainPage} element={<MainPage />} />
         <Route
-          exact={true}
           path={AppRoute.presentationPage}
-          component={PresentationPage}
+          element={<PresentationPage />}
         />
-        <Route
-          exact={true}
-          path={AppRoute.todoListPage}
-          component={TodoListPage}
-        />
-        <Route
-          exact={true}
-          path={AppRoute.thunkTestPage}
-          component={ThunkTestPage}
-        />
-        <Redirect to={AppRoute.mainPage} />
-      </Switch>
+        <Route path={AppRoute.todoListPage} element={<TodoListPage />} />
+        <Route path={AppRoute.thunkTestPage} element={<ThunkTestPage />} />
+        <Route path="*" element={<Navigate to={AppRoute.mainPage} />} />
+      </Routes>
     </Provider>
   </>
 );
