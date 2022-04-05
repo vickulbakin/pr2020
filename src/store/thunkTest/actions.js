@@ -1,10 +1,10 @@
-export const PUT_DATA = "PUT_DATA";
+export const PUT_DATA = 'PUT_DATA';
 
 const putData = (dataFromServer) => {
   return {
     type: PUT_DATA,
-    payload: dataFromServer
-  }
+    payload: dataFromServer,
+  };
 };
 
 export const loadData = (searchValue) => (dispatch, getState) => {
@@ -13,4 +13,4 @@ export const loadData = (searchValue) => (dispatch, getState) => {
     .then((json) => {
       dispatch(putData(json));
     });
-}
+};

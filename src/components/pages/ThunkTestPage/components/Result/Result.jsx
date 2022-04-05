@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 
-import s from "./Result.scss";
+import s from './Result.scss';
 
-export const Result = ({ searchState }) => {
-  if (searchState.status === "init") {
+export const Result = ({searchState}) => {
+  if (searchState.status === 'init') {
     return null;
   }
 
-  if (searchState.status === "loader") {
+  if (searchState.status === 'loader') {
     return <p className={s.title}>Загрузка...</p>;
   }
 
@@ -25,7 +25,7 @@ export const Result = ({ searchState }) => {
           <p>owner: {item.owner.login}</p>
           <p>name: {item.name}</p>
           <p className={s.linkWrapper}>
-            <a href={item.html_url} target="_blank">
+            <a href={item.html_url} target="_blank" rel="noreferrer">
               {item.html_url}
             </a>
           </p>

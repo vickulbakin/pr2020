@@ -1,9 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { Container } from "../../common/Container/Container";
-import { AppRoute } from "../../../data/constants";
+import React from 'react';
+import {Link} from 'react-router-dom';
+import {Container} from '../../common/Container/Container';
+import {AppRoute} from '../../../data/constants';
 
-import s from "./MainPage.scss";
+import s from './MainPage.scss';
 
 export const MainPage = () => (
   <main className={s.root}>

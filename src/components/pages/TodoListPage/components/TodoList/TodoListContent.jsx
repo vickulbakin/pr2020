@@ -1,9 +1,9 @@
-import React from "react";
-import { TodoItem } from "../TodoItem/TodoItem";
+import React from 'react';
+import {TodoItem} from '../TodoItem/TodoItem';
 
-import s from "./TodoList.scss";
+import s from './TodoList.scss';
 
-export const TodoListContent = ({ todos }) => {
+export const TodoListContent = ({todos}) => {
   if (!todos.length) {
     return <p>Нет дел</p>;
   }

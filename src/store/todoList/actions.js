@@ -1,8 +1,8 @@
-import { NEXT_TODO_ID_LS_KEY } from "../../data/constants";
+import {NEXT_TODO_ID_LS_KEY} from '../../data/constants';
 
-export const ADD_TODO_LIST_ITEM = "ADD_TODO_LIST_ITEM";
-export const TOGGLE_TODO_LIST_ITEM = "TOGGLE_TODO_LIST_ITEM";
-export const REMOVE_TODO_LIST_ITEM = "REMOVE_TODO_LIST_ITEM";
+export const ADD_TODO_LIST_ITEM = 'ADD_TODO_LIST_ITEM';
+export const TOGGLE_TODO_LIST_ITEM = 'TOGGLE_TODO_LIST_ITEM';
+export const REMOVE_TODO_LIST_ITEM = 'REMOVE_TODO_LIST_ITEM';
 
 const localStorageTodoId = localStorage.getItem(NEXT_TODO_ID_LS_KEY);
 let nextTodoId = localStorageTodoId || 0;

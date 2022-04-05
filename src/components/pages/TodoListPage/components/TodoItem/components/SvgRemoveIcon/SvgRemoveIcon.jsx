@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export const SvgRemoveIcon = ({className}) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60.963 60.842" className={className}>
@@ -8,7 +8,7 @@ export const SvgRemoveIcon = ({className}) => (
 	l22.378,22.379L1.369,52.861c-1.826,1.826-1.826,4.785,0,6.611c0.913,0.913,2.109,1.369,3.306,1.369s2.393-0.456,3.306-1.369
 	l22.502-22.502l22.501,22.502c0.913,0.913,2.109,1.369,3.306,1.369s2.393-0.456,3.306-1.369
 	C61.42,57.647,61.42,54.687,59.595,52.861z"
-    fill="#231F20"
+      fill="#231F20"
     />
   </svg>
 );

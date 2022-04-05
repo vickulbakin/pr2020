@@ -1,14 +1,9 @@
-import React from "react";
-import cn from "classnames";
+import React from 'react';
+import cn from 'classnames';
 
-import s from "./Search.scss";
+import s from './Search.scss';
 
-export const Search = ({
-  inputValue,
-  onInputChange,
-  onSearchButtonClick,
-  className,
-}) => (
+export const Search = ({inputValue, onInputChange, onSearchButtonClick, className}) => (
   <section className={cn(s.search, className)}>
     <input
       type="text"

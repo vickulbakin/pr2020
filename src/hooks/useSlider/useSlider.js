@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, useCallback } from "react";
+import {useRef, useState, useEffect, useCallback} from 'react';
 
 export const useSlider = (slides) => {
   const sliderRef = useRef(null);
@@ -18,11 +18,11 @@ export const useSlider = (slides) => {
 
   const onPressArrow = useCallback(
     (event) => {
-      if (event.code === "ArrowRight") {
+      if (event.code === 'ArrowRight') {
         onNextSlide();
       }
 
-      if (event.code === "ArrowLeft") {
+      if (event.code === 'ArrowLeft') {
         onPrevSlide();
       }
     },
@@ -30,10 +30,7 @@ export const useSlider = (slides) => {
   );
 
   useEffect(() => {
-    const rafId = requestAnimationFrame(
-      () =>
-        (sliderRef.current.style.transform = `translateX(${transformSlider}vw)`)
-    );
+    const rafId = requestAnimationFrame(() => (sliderRef.current.style.transform = `translateX(${transformSlider}vw)`));
 
     return () => {
       cancelAnimationFrame(rafId);
@@ -41,9 +38,9 @@ export const useSlider = (slides) => {
   }, [transformSlider]);
 
   useEffect(() => {
-    window.addEventListener("keydown", onPressArrow);
+    window.addEventListener('keydown', onPressArrow);
 
-    return () => window.removeEventListener("keydown", onPressArrow);
+    return () => window.removeEventListener('keydown', onPressArrow);
   }, [onPressArrow]);
 
   return {

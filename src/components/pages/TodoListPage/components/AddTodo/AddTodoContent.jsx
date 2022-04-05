@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React, {useState} from 'react';
 
-import s from "./AddTodo.scss";
+import s from './AddTodo.scss';
 
 export const AddTodoContent = ({addTodo}) => {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
 
   const onTodoInputChange = (event) => {
     setInputValue(event.target.value);
   };
 
   const onAddTodo = () => {
-    if (inputValue !== "") {
+    if (inputValue !== '') {
       addTodo(inputValue);
-      setInputValue("");
+      setInputValue('');
     }
   };
 

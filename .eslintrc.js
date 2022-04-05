@@ -14,7 +14,6 @@ module.exports = {
   },
   rules: {
     'no-debugger': ['error'],
-    'no-restricted-globals': [2, 'localStorage', 'sessionStorage'],
     'no-console': ['warn'],
     'no-unneeded-ternary': [
       'warn',
@@ -32,6 +31,7 @@ module.exports = {
     'react/prefer-stateless-function': ['warn'],
     'react/require-default-props': ['warn'],
     'react/require-optimization': ['warn'],
+    'react/prop-types': 0,
     'react/sort-comp': ['off'],
     'react/jsx-handler-names': [
       'warn',

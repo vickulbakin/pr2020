@@ -1,5 +1,5 @@
-import { SET_TODO_FILTER } from "./actions";
-import { TodoFilterType, FILTER_LS_KEY } from "../../data/constants";
+import {SET_TODO_FILTER} from './actions';
+import {TodoFilterType, FILTER_LS_KEY} from '../../data/constants';
 
 const localStorageFilter = localStorage.getItem(FILTER_LS_KEY);
 const defaultState = localStorageFilter || TodoFilterType.all;
