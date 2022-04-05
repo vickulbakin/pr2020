@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import { Slider } from "../../common/Slider/Slider";
+import {Slider} from '../../common/Slider/Slider';
 
-import s from "./PresentationPage.scss";
+import s from './PresentationPage.scss';
 
 export const PresentationPage = () => (
   <main className={s.root}>

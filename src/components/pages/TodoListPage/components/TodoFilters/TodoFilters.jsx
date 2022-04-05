@@ -1,12 +1,10 @@
-import React from "react";
-import { connect } from "react-redux";
-import { TodoFiltersContent } from "./TodoFiltersContent";
-import { setFilter } from "../../../../../store/todoFilter/actions";
+import React from 'react';
+import {connect} from 'react-redux';
+import {TodoFiltersContent} from './TodoFiltersContent';
+import {setFilter} from '../../../../../store/todoFilter/actions';
 
-export const TodoFiltersContainer = ({ activeFilter, setFilter }) => {
-  return (
-    <TodoFiltersContent activeFilter={activeFilter} setFilter={setFilter} />
-  );
+export const TodoFiltersContainer = ({activeFilter, setFilter}) => {
+  return <TodoFiltersContent activeFilter={activeFilter} setFilter={setFilter} />;
 };
 
 const mapStateToProps = (state) => {
@@ -19,7 +17,4 @@ const mapDispatchToProps = {
   setFilter,
 };
 
-export const TodoFilters = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TodoFiltersContainer);
+export const TodoFilters = connect(mapStateToProps, mapDispatchToProps)(TodoFiltersContainer);

@@ -1,5 +1,5 @@
-import { ADD_TODO_LIST_ITEM, TOGGLE_TODO_LIST_ITEM, REMOVE_TODO_LIST_ITEM } from "./actions";
-import { TODOS_LS_KEY } from "../../data/constants";
+import {ADD_TODO_LIST_ITEM, TOGGLE_TODO_LIST_ITEM, REMOVE_TODO_LIST_ITEM} from './actions';
+import {TODOS_LS_KEY} from '../../data/constants';
 
 const localStorageTodos = JSON.parse(localStorage.getItem(TODOS_LS_KEY));
 const defaultState = {
@@ -24,9 +24,7 @@ export const todoListReducer = (state = defaultState, action) => {
         todos: stateTodosWithNewItem,
       };
     case TOGGLE_TODO_LIST_ITEM:
-      const completedTodoIndex = state.todos.findIndex(
-        (todo) => todo.id === action.payload.id
-      );
+      const completedTodoIndex = state.todos.findIndex((todo) => todo.id === action.payload.id);
 
       if (completedTodoIndex !== undefined) {
         state.todos[completedTodoIndex] = {
@@ -46,7 +44,7 @@ export const todoListReducer = (state = defaultState, action) => {
         ...state,
       };
     case REMOVE_TODO_LIST_ITEM:
-      const stateTodosWithoutRemovedItem = state.todos.filter(todo => todo.id !== action.payload.id);
+      const stateTodosWithoutRemovedItem = state.todos.filter((todo) => todo.id !== action.payload.id);
       localStorage.setItem(TODOS_LS_KEY, JSON.stringify(stateTodosWithoutRemovedItem));
 
       return {

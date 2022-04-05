@@ -1,10 +1,10 @@
-import React from "react";
-import cn from "classnames";
-import { TodoFilterType } from "../../../../../data/constants";
+import React from 'react';
+import cn from 'classnames';
+import {TodoFilterType} from '../../../../../data/constants';
 
-import s from "./TodoFilters.scss";
+import s from './TodoFilters.scss';
 
-export const TodoFiltersContent = ({ activeFilter, setFilter }) => (
+export const TodoFiltersContent = ({activeFilter, setFilter}) => (
   <ul className={s.root}>
     {Object.keys(TodoFilterType).map((filterKey) => {
       const currentFilter = TodoFilterType[filterKey];
