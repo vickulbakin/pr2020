@@ -8,24 +8,34 @@
   "license": "MIT",
   "scripts": {
     "start": "NODE_ENV=development webpack serve",
-    "build": "NODE_ENV=production webpack"
+    "build": "NODE_ENV=production webpack",
+    "lint:css": "stylelint 'src/components/**/*.scss'",
+    "lint:js": "eslint 'src/**/*.{js,jsx}'",
+    "lint": "run-p lint:*",
+    "format:js": "prettier --write 'src/**/*.{js,jsx}' && eslint --fix 'src/**/*.{js,jsx}' --config .eslintrc.js",
+    "format:css": "prettier --write 'src/components/**/*.scss' && stylelint --fix 'src/components/**/*.scss' --config stylelint.format.js",
+    "format": "run-p format:*"
   },
-  "devDependencies": {
-    "@babel/core": "7.17.8",
-    "@babel/preset-env": "7.16.11",
-    "@babel/preset-react": "7.16.7",
-    "babel-loader": "8.2.4",
-    "clean-webpack-plugin": "4.0.0",
-    "css-loader": "6.7.1",
-    "html-webpack-plugin": "5.5.0",
-    "mini-css-extract-plugin": "2.6.0",
-    "node-sass": "7.0.1",
-    "postcss-loader": "6.2.1",
-    "sass-loader": "12.6.0",
-    "style-loader": "3.3.1",
-    "webpack": "5.70.0",
-    "webpack-cli": "4.9.2",
-    "webpack-dev-server": "4.7.4"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.css": [
+      "prettier --write",
+      "stylelint --fix --config .stylelint.format.js",
+      "git add"
+    ],
+    "*.{js,jsx}": [
+      "prettier --write",
+      "eslint --fix --config .eslintrc.js",
+      "git add"
+    ],
+    "*.{md,json}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "dependencies": {
     "classnames": "2.3.1",
@@ -39,5 +49,46 @@
     "redux": "4.1.2",
     "redux-devtools-extension": "2.13.9",
     "redux-thunk": "2.4.1"
+  },
+  "devDependencies": {
+    "@babel/core": "7.17.8",
+    "@babel/eslint-parser": "7.17.0",
+    "@babel/preset-env": "7.16.11",
+    "@babel/preset-react": "7.16.7",
+    "babel-loader": "8.2.4",
+    "clean-webpack-plugin": "4.0.0",
+    "css-loader": "6.7.1",
+    "eslint": "8.12.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-flowtype": "8.0.3",
+    "eslint-plugin-import": "2.25.4",
+    "eslint-plugin-jsx-a11y": "6.5.1",
+    "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-react": "7.29.4",
+    "eslint-plugin-react-hooks": "4.4.0",
+    "html-webpack-plugin": "5.5.0",
+    "husky": "7.0.4",
+    "lint-staged": "12.3.7",
+    "mini-css-extract-plugin": "2.6.0",
+    "node-sass": "7.0.1",
+    "postcss-custom-media": "8.0.0",
+    "postcss-custom-properties": "12.1.5",
+    "postcss-import": "14.1.0",
+    "postcss-loader": "6.2.1",
+    "postcss-scss": "4.0.3",
+    "prettier": "2.6.2",
+    "sass-loader": "12.6.0",
+    "style-loader": "3.3.1",
+    "stylelint": "14.6.1",
+    "stylelint-at-rule-no-children": "0.3.1",
+    "stylelint-config-prettier": "9.0.3",
+    "stylelint-config-recommended": "7.0.0",
+    "stylelint-declaration-block-no-ignored-properties": "2.5.0",
+    "stylelint-media-use-custom-media": "2.0.0",
+    "stylelint-order": "5.0.0",
+    "stylelint-value-no-unknown-custom-properties": "4.0.0",
+    "webpack": "5.70.0",
+    "webpack-cli": "4.9.2",
+    "webpack-dev-server": "4.7.4"
   }
 }

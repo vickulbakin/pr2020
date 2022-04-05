@@ -1,0 +1,15 @@
+:root {
+  --font-fallback: 'Segoe UI', '-apple-system', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+
+  --duration: .2s;
+  --timing: ease-in-out;
+
+  --color-text: #333333;
+
+  /* grid layout */
+  --grid-padding: 16px;
+  --grid-content-fluid: calc(512px + 2 * var(--grid-padding));
+  --grid-content-tablet: calc(864px + 2 * var(--grid-padding));
+  --grid-content-desktop: calc(1104px + 2 * var(--grid-padding));
+  --grid-content-desktop-large: calc(1200px + 2 * var(--grid-padding));
+}
