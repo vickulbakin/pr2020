@@ -1,12 +1,16 @@
 import React from 'react';
 import cn from 'classnames';
+
 import {SvgRemoveIcon} from './components/SvgRemoveIcon/SvgRemoveIcon';
+
+import {DataQa} from '../../../../../data/constants';
 
 import s from './TodoItem.scss';
 
 export const TodoItemContent = ({todo, toggleTodo, removeTodo}) => (
   <li className={s.root}>
     <div
+      data-testid={DataQa.todoItem}
       role="button"
       className={cn(s.todo, {
         [s.todo_complete]: todo.completed,
@@ -22,7 +26,7 @@ export const TodoItemContent = ({todo, toggleTodo, removeTodo}) => (
         {todo.value}
       </span>
     </div>
-    <button onClick={() => removeTodo(todo.id)} className={s.remove}>
+    <button data-testid={DataQa.buttonRemoveTodo} onClick={() => removeTodo(todo.id)} className={s.remove}>
       <SvgRemoveIcon className={s.removeIcon} />
     </button>
   </li>

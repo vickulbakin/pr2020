@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 
+import {DataQa} from '../../../../../data/constants';
+
 import s from './AddTodo.scss';
 
 export const AddTodoContent = ({addTodo}) => {
@@ -19,6 +21,7 @@ export const AddTodoContent = ({addTodo}) => {
   return (
     <div className={s.root}>
       <input
+        data-testid={DataQa.addTodoInput}
         type="text"
         name="todoInput"
         placeholder="Запланировать дело"
@@ -26,7 +29,9 @@ export const AddTodoContent = ({addTodo}) => {
         onChange={onTodoInputChange}
         className={s.input}
       />
-      <button onClick={onAddTodo}>+</button>
+      <button data-testid={DataQa.buttonAddTodo} onClick={onAddTodo}>
+        +
+      </button>
     </div>
   );
 };

@@ -1,3 +1,5 @@
+import {getRepositories} from '../../utils/getRepositories';
+
 export const PUT_DATA = 'PUT_DATA';
 
 const putData = (dataFromServer) => {
@@ -8,9 +10,16 @@ const putData = (dataFromServer) => {
 };
 
 export const loadData = (searchValue) => (dispatch, getState) => {
-  fetch(`https://api.github.com/search/repositories?q=${searchValue}`)
-    .then((responce) => responce.json())
+  const repositoriesJson = getRepositories(searchValue);
+  repositoriesJson
     .then((json) => {
       dispatch(putData(json));
+    })
+    .catch(() => {
+      dispatch(
+        putData({
+          total_count: 0,
+        })
+      );
     });
 };

@@ -9,6 +9,8 @@
   "scripts": {
     "start": "NODE_ENV=development webpack serve",
     "build": "NODE_ENV=production webpack",
+    "test": "jest --passWithNoTests",
+    "test:coverage": "jest --coverage",
     "lint:css": "stylelint 'src/components/**/*.scss'",
     "lint:js": "eslint 'src/**/*.{js,jsx}'",
     "lint": "run-p lint:*",
@@ -18,7 +20,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "HOOK=true yarn test"
     }
   },
   "lint-staged": {
@@ -55,6 +58,8 @@
     "@babel/eslint-parser": "7.17.0",
     "@babel/preset-env": "7.16.11",
     "@babel/preset-react": "7.16.7",
+    "@testing-library/jest-dom": "5.16.4",
+    "@testing-library/react": "12.1.4",
     "babel-loader": "8.2.4",
     "clean-webpack-plugin": "4.0.0",
     "css-loader": "6.7.1",
@@ -68,6 +73,7 @@
     "eslint-plugin-react-hooks": "4.4.0",
     "html-webpack-plugin": "5.5.0",
     "husky": "7.0.4",
+    "jest": "27.5.1",
     "lint-staged": "12.3.7",
     "mini-css-extract-plugin": "2.6.0",
     "node-sass": "7.0.1",
@@ -77,6 +83,7 @@
     "postcss-loader": "6.2.1",
     "postcss-scss": "4.0.3",
     "prettier": "2.6.2",
+    "redux-mock-store": "1.5.4",
     "sass-loader": "12.6.0",
     "style-loader": "3.3.1",
     "stylelint": "14.6.1",
