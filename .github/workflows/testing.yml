@@ -1,0 +1,34 @@
+name: testing
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v1
+        name: 'setup node'
+        with:
+          node-version: '16.x'
+      - name: 'install'
+        run: yarn install
+      - name: 'format'
+        run: yarn format
+      - name: 'lint'
+        run: yarn lint
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v1
+        name: 'setup node'
+        with:
+          node-version: '16.x'
+      - name: 'install'
+        run: yarn install
+      - name: 'test'
+        run: yarn test
