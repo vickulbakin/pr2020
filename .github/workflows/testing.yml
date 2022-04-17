@@ -17,9 +17,11 @@ jobs:
       - name: 'install'
         run: yarn install
       - name: 'format'
-        run: yarn format
+        run: yarn format:js
+      - run: yarn format:css
       - name: 'lint'
-        run: yarn lint
+        run: yarn lint:js
+      - run: yarn lint:css
   test:
     runs-on: ubuntu-latest
     steps:
