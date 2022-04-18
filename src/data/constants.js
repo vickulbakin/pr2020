@@ -1,9 +1,9 @@
 export const AppRoute = {
-  mainPage: '/',
-  presentationPage: '/presentation',
-  todoListPage: '/todo-list',
-  thunkTestPage: '/thunk-test',
-  notFound: '/404',
+  mainPage: '/pr2020/',
+  presentationPage: '/pr2020/presentation',
+  todoListPage: '/pr2020/todo-list',
+  thunkTestPage: '/pr2020/thunk-test',
+  notFound: '/pr2020/404',
 };
 
 export const TodoFilterType = {
