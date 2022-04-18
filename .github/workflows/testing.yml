@@ -16,10 +16,14 @@ jobs:
           node-version: '16.x'
       - name: 'install'
         run: yarn install
-      - name: 'format'
-        run: yarn format
-      - name: 'lint'
-        run: yarn lint
+      - name: 'format js'
+        run: yarn format:js
+      - name: 'format css'
+        run: yarn format:css
+      - name: 'lint js'
+        run: yarn lint:js
+      - name: 'lint css'
+        run: yarn lint:css
   test:
     runs-on: ubuntu-latest
     steps:
