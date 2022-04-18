@@ -1,32 +1,32 @@
-const path = require("path");
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
-const isDev = process.env.NODE_ENV === "development";
+const isDev = process.env.NODE_ENV === 'development';
 
 module.exports = {
-  entry: "./src/index.js",
-  mode: isDev ? "development" : "production",
+  entry: './src/index.js',
+  mode: isDev ? 'development' : 'production',
   output: {
-    path: path.resolve(__dirname, "./dist"),
-    filename: isDev ? "[name].js" : "[name].[contenthash].js"
+    path: path.resolve(__dirname, './docs'),
+    filename: isDev ? '[name].js' : '[name].[contenthash].js',
   },
-  devtool: "source-map",
+  devtool: 'source-map',
   devServer: {
     compress: true,
     open: true,
     port: 3000,
-    hot: "only",
+    hot: 'only',
     historyApiFallback: true,
     client: {
-      progress: true
+      progress: true,
     },
     static: {
-      directory: path.join(__dirname, "./dist"),
-      watch: true
-    }
+      directory: path.join(__dirname, './docs'),
+      watch: true,
+    },
   },
 
   module: {
@@ -34,63 +34,63 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ["babel-loader"]
+        use: ['babel-loader'],
       },
       {
         test: /\.(css|scss)$/,
         use: [
-          isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+          isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               importLoaders: 1,
               modules: {
-                localIdentName: isDev ? "[name]__[local]___[hash:base64:5]" : "[hash:base64:5]"
+                localIdentName: isDev ? '[name]__[local]___[hash:base64:5]' : '[hash:base64:5]',
               },
-              sourceMap: true
-            }
+              sourceMap: true,
+            },
           },
-          "postcss-loader",
-          "sass-loader"
-        ]
+          'postcss-loader',
+          'sass-loader',
+        ],
       },
       {
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
-        type: "asset/resource",
+        type: 'asset/resource',
         use: [
           {
             options: {
-              outputPath: "images"
-            }
-          }
-        ]
+              outputPath: 'images',
+            },
+          },
+        ],
       },
       {
         test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
-        type: "asset/inline",
+        type: 'asset/inline',
         use: [
           {
             options: {
-              outputPath: "fonts"
-            }
-          }
-        ]
-      }
-    ]
+              outputPath: 'fonts',
+            },
+          },
+        ],
+      },
+    ],
   },
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: ['.js', '.jsx'],
   },
   plugins: [
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: "[name].[contenthash].css"
+      filename: '[name].[contenthash].css',
     }),
     new HtmlWebpackPlugin({
-      title: "webpack 5",
-      template: path.resolve(__dirname, "./src/index.html"), // шаблон
-      filename: "index.html", // название выходного файла
+      title: 'webpack 5',
+      template: path.resolve(__dirname, './src/index.html'), // шаблон
+      filename: 'index.html', // название выходного файла
     }),
     new webpack.HotModuleReplacementPlugin(),
-  ]
+  ],
 };
